@@ -16,7 +16,11 @@ def register(request):
         form = UserRegistrationForm(request.POST)
         if(form.is_valid()):
             form.save()
-            return redirect("profile")
+            context = {
+                'name': '(Name goes here)',
+                'email': '(Email goes here)',
+            }
+            return render(request, "User/profile.html", context)
     else:
         form = UserRegistrationForm()
     context = {'form': form}
