@@ -1,15 +1,10 @@
 from django.shortcuts import render
 from .form import UserRegistrationForm
+from .models import Userinfo
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request, "User/home.html")
-
-def profile(request):
-    context= {
-        'name' : '(Name goes here)',
-        'email' : '(Email goes here)',
-    }
-    return render(request, "User/profile.html", context)
 
 def register(request):
     if(request.method == "POST"):
@@ -17,8 +12,9 @@ def register(request):
         if(form.is_valid()):
             form.save()
             context = {
-                'name': '(Name goes here)',
-                'email': '(Email goes here)',
+                'fname': request.user.first_name,
+                'lname': request.user.last_name,
+                'email': request.user.email,
             }
             return render(request, "User/profile.html", context)
     else:
@@ -27,7 +23,24 @@ def register(request):
     return render(request, "User/register.html", context)
 
 def login(request):
-    return render(request, "User/login.html")
+    return render(request, "User/login.html", context)
 
+@login_required
 def logout(request):
     return render(request, "User/logout.html")
+
+@login_required
+def profile(request):
+    context = {
+        'fname': request.user.first_name,
+        'lname': request.user.last_name,
+        'email': request.user.email,
+    }
+    return render(request, "User/profile.html", context)
+
+@login_required
+def userinfo(request):
+    uinfo = Userinfo.objects.all()
+    context = {'uinfo': uinfo}
+    return render(request, "User/userinfo.html", context)
+

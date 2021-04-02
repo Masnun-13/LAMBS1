@@ -1,0 +1,60 @@
+{% extends 'Routine/base.html' %}
+
+{% block title %}
+
+Routines
+
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<style>
+    table, th, td {
+        border: 2px solid rgb(247, 208, 215);
+        height: 40px;
+    }
+
+    table {
+     margin-top:100px;
+     width: 55%;
+
+    }
+
+    th {
+     background-color: #7e025f;
+     color: white;
+    }
+
+    td {
+     background-color: #e47fcb;
+     color: black;
+    }
+
+    th, td {
+     padding: 15px;
+     text-align: center;
+    }
+</style>
+
+
+<table>
+    <tr>
+        <th>User</th>
+        <th>Activity</th>
+        <th>Activity Number</th>
+        <th>Starting Time</th>
+        <th>Ending Time</th>
+    </tr>
+    {% for r in routines %}
+    <tr>
+        <td>{{ r.routine_user }}</td>
+        <td>{{ r.routine_activity }}</td>
+        <td>{{ r.routine_actno }}</td>
+        <td>{{ r.routine_time1 }}</td>
+        <td>{{ r.routine_time2 }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'User/base.html' %}
+
+
+{% block title %}
+
+User Info
+
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<style>
+    table, th, td {
+        border: 2px solid rgb(247, 208, 215);
+        height: 40px;
+    }
+
+    table {
+     margin-top:100px;
+     width: 55%;
+
+    }
+
+    th {
+     background-color: #7e025f;
+     color: white;
+    }
+
+    td {
+     background-color: #e47fcb;
+     color: black;
+    }
+
+    th, td {
+     padding: 15px;
+     text-align: center;
+    }
+</style>
+
+
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Occupation</th>
+    </tr>
+    {% for r in uinfo %}
+    <tr>
+        <td>{{ r.user_firstname }}</td>
+        <td>{{ r.user_lastname }}</td>
+        <td>{{ r.user_age }}</td>
+        <td>{{ r.user_occupation }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
