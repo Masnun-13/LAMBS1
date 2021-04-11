@@ -1,5 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, forms
+from django import forms as forms2
 from django.contrib.auth.models import User
+from User.models import Userinfo
 
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField()
@@ -15,3 +17,25 @@ class UserRegistrationForm(UserCreationForm):
                   'password1',
                   'password2'
                   ]
+
+class UserInfoForm(forms2.ModelForm):
+
+    class Meta:
+        model = Userinfo
+        fields = ['user_id',
+                  'user_firstname',
+                  'user_lastname',
+                  'user_age',
+                  'user_occupation'
+                  ]
+
+class UserDeleteForm(forms2.ModelForm):
+
+    class Meta:
+        model = Userinfo
+        fields = ['user_id',
+                  ]
+
+
+
+

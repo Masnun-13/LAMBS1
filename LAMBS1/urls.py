@@ -28,5 +28,12 @@ urlpatterns = [
     path('accounts/profile/', uviews.profile),
     path('logout/', auth_views.LogoutView.as_view(template_name='User/logout.html'),name="logout"),
     path('userinfo/', uviews.userinfo, name="userinfo"),
+    path('userinfo/enteruserinfo/', uviews.enteruserinfo, name='enteruserinfo'),
+    path('userinfo/deleteuser/', uviews.deleteuser, name='deleteuser'),
     path('routine/', rviews.routine, name="routines"),
+    path('activitylist/', rviews.activitylist, name="activities"),
+    path('activitylist/enteractivitylist/', rviews.enteractivitylist, name='enteractivitylist'),
+    path('activitylist/deleteactivitylist/', rviews.deleteactivitylist, name='deleteactivitylist'),
+    path('activitylist/createroutine/', rviews.create_routine, name='createroutine'),
+    path('activitylist/deleteroutine/', rviews.delete_routine, name='deleteroutine'),
 ]

@@ -45,6 +45,7 @@ Routines
         <th>Activity Number</th>
         <th>Starting Time</th>
         <th>Ending Time</th>
+        <th>Day</th>
     </tr>
     {% for r in routines %}
     <tr>
@@ -53,6 +54,7 @@ Routines
         <td>{{ r.routine_actno }}</td>
         <td>{{ r.routine_time1 }}</td>
         <td>{{ r.routine_time2 }}</td>
+        <td>{{ r.routine_day }}</td>
     </tr>
     {% endfor %}
 </table>
