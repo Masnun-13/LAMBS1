@@ -43,16 +43,24 @@ Activity Lists
         <th>User</th>
         <th>Activity</th>
         <th>Activity Number</th>
-        <th>Time</th>
+        <th>Activity Priority</th>
+        <th>Starting Time</th>
+        <th>Time Spent</th>
         <th>Day</th>
+        <th>Update</th>
+        <th>Delete</th>
     </tr>
     {% for r in activities %}
     <tr>
         <td>{{ r.alist_username }}</td>
         <td>{{ r.alist_activity }}</td>
         <td>{{ r.alist_actno }}</td>
+        <td>{{ r.alist_priority }}</td>
+        <td>{{ r.alist_stime }}</td>
         <td>{{ r.alist_time }}</td>
         <td>{{ r.alist_day }}</td>
+        <td><a class="btn btn-sm btn-info" href="{% url 'updateactivitylist' r.alist_actno %}">Update</a></td>
+        <td><a class="btn btn-sm btn-danger" href="{% url 'deleteactivitylist' r.alist_actno %}">Delete</a></td>
     </tr>
     {% endfor %}
 </table>
@@ -60,19 +68,38 @@ Activity Lists
 <div class="container" style="padding-left:25%; padding-right:25%; padding-top:5%;">
 
     <button class="form-group btn btn-outline-info" type="button">
-        <a href="{% url 'enteractivitylist' %}">Enter Activity List</a>
+        <a href="{% url 'entermyactivitylist' %}">Enter Activity (Me)</a>
+    </button>
+    <button class="form-group btn btn-outline-info" type="button">
+        <a href="{% url 'enteractivitylist' %}">Enter Activity (Other)</a>
     </button>
     <br>
     <button class="form-group btn btn-outline-info" type="button">
-        <a href="{% url 'deleteactivitylist' %}">Delete Activity List</a>
+        <a href="{% url 'deletemyfullactivitylist' %}">Delete Activity List (Me)</a>
+    </button>
+    <button class="form-group btn btn-outline-info" type="button">
+        <a href="{% url 'deletefullactivitylist' %}">Delete Activity List (Other)</a>
     </button>
     <br>
     <button class="form-group btn btn-outline-info" type="button">
-        <a href="{% url 'createroutine' %}">Create Routine</a>
+        <a href="{% url 'createmyroutine' %}">Create Routine (Me)</a>
+    </button>
+    <button class="form-group btn btn-outline-info" type="button">
+        <a href="{% url 'createroutine' %}">Create Routine (Other)</a>
     </button>
     <br>
     <button class="form-group btn btn-outline-info" type="button">
-        <a href="{% url 'deleteroutine' %}">Delete Routine</a>
+        <a href="{% url 'deletemyroutine' %}">Delete Routine (Me)</a>
+    </button>
+    <button class="form-group btn btn-outline-info" type="button">
+        <a href="{% url 'deleteroutine' %}">Delete Routine (Other)</a>
+    </button>
+    <br>
+    <button class="form-group btn btn-outline-info" type="button">
+        <a href="{% url 'updatemyroutine' %}">Update Routine (Me)</a>
+    </button>
+    <button class="form-group btn btn-outline-info" type="button">
+        <a href="{% url 'updateroutine' %}">Update Routine (Other)</a>
     </button>
 
 </div>

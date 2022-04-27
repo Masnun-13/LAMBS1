@@ -9,14 +9,17 @@ Routines
 {% block content %}
 {% load static %}
 
-<style>
+<style xmlns="http://www.w3.org/1999/html">
+    select {
+    margin-top:50px;
+    }
     table, th, td {
         border: 2px solid rgb(247, 208, 215);
         height: 40px;
     }
 
     table {
-     margin-top:100px;
+     margin-top:50px;
      width: 55%;
 
     }
@@ -36,8 +39,16 @@ Routines
      text-align: center;
     }
 </style>
-
-
+<form method="POST">
+    {% csrf_token %}
+    <select name = "userdrop" >
+        {% for r in users %}
+        <option>{{ r.routine_user }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <button class="form-group btn btn-outline-info" type="submit">Show Routines</button>
+</form>
 <table>
     <tr>
         <th>User</th>
